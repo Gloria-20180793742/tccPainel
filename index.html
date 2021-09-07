@@ -1,0 +1,2549 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Painel de Monitoramento</title>
+      <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+      <link rel="stylesheet" href="assets/css/style.css">
+      <link rel="stylesheet" href="assets/fontawesome-free-5.15.4-web/css/all.css">
+      <link rel="stylesheet" href="assets/fontawesome-free-5.15.4-web/css/solid.css">
+      
+      <style>
+
+        tbody{
+        font-size: 20px;
+        font-family: arial;
+        }
+        .spaceTable{
+          margin-bottom: 0px;
+        }  
+        .corpo{
+          height: 600px;
+        }
+        .logoSize{
+          width: 120px;
+          height: auto; 
+        }
+        h2{
+          color: #535454;
+        }
+        h4{
+          color: #898a8a;
+        }
+        .card-filtro{
+          margin: auto;
+        }
+        .filtro-espaco{
+          margin: 10px 0px;
+        }
+        .parametros{
+          margin: 10px;
+          height: auto;
+          width: auto;
+        }
+        .seta{
+          width: 10px;
+        }
+        .hide{
+        display:none;
+        }
+        .scroll{
+          height: 300px;
+          overflow: auto;
+        }
+        .imgSize{
+          height: 250px;
+          width: 300px;
+        }
+        .footer{
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          height: 60px;
+          line-height: 60px;
+          padding:0px;
+        }
+
+      </style>    
+
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom: 20px;">
+      
+      <div class="container-fluid">
+        
+        <a class="navbar-brand" style="font-size: xx-large;" href="#">
+          
+          <img class="logoSize" src="assets/img/PizzaVerde.PNG" alt="Logo">
+          Taxa de mortalidade infantil 
+
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          
+          <span class="navbar-toggler-icon"></span>
+        
+        </button>
+            
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup" >
+          
+          <div class="navbar-nav">
+
+            <a class="nav-link" href="#">Início</a>
+            <a class="nav-link" href="#">SESPA</a>
+            <a class="nav-link" href="#">Contatos</a>
+            
+          </div>
+          
+        </div>
+
+      </div>
+
+    </nav>
+
+    <div class="container-fluid">
+
+      <div class="row">
+
+        <div class="col-2 ">
+
+          <div class="card border-secondary mb-3" style="min-width: auto; padding: 10px;"> 
+              
+            <h4 style="margin: 6px auto" class="card-title">Escolha os parâmetros</h4>
+
+            <hr>
+      
+            <div class="col-12">
+
+              <div class="row-12">
+
+                <!--Col.2 Dropdown dos Anos-->
+
+                <h5 class="card-title">Ano</h5>
+              
+                  <select class="form-select parametros" aria-label="Default select example">
+                    <option selected>Ano</option>
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>  
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                  </select>
+
+              </div> 
+              
+              <hr>
+
+              <div class="row-12">
+
+                <!--Col.2 Dropdown dos Anos-->
+
+                <h5 class="card-title">Referência</h5>
+              
+                  <select class="form-select parametros" aria-label="Default select example">
+                    <option selected>Referência</option>
+                    <option value="Residencia">Óbitos p/ Residência</option>
+                    <option value="Ocorrencia">Óbitos p/ Ocorrência</option>
+                  </select>
+
+              </div> 
+
+              <hr>
+              
+              <div class="row-12">
+
+                <div style="margin: 10px auto">
+
+                  <button type="button" class="btn btn-outline-primary btn-lg parametros">BUSCAR</button>
+
+                </div>
+              
+              </div>
+
+            </div>  
+              
+          </div> 
+          
+        </div>  
+
+        <div class="col-10">
+          <div class="col-12 scroll" >
+            <table class="table table-bordered table-striped table-hover table-light" style="color: #535454;">
+                
+              <thead class="table" style="color: #535454;">
+                <th>NÍVEL</th>
+                <th>TOTAL</th>
+                <th>TAXA</th>
+                <th>VER DADOS</th>
+              </thead>
+                  
+              <tbody>    
+                <tr> <!--Tabela Estadual-->
+                  <td class="fw-bold" style="color: #535454;">
+                    <button onclick='myFunction("idEstadual")'>
+                      <img src="./assets/img/seta.svg" class="seta" alt="seta"/>
+                    </button>
+                    Estadual
+                  </td>
+                  <td>1658</td>
+                  <td>6,21</td>
+                  <td>
+                    <button>
+                      <i class="fas fa-search"></i>            
+                    </button>
+                  </td>
+                </tr>
+  
+                <tr class="idEstadual"> <!--Tabela 1ª Regional-->
+                  <td colspan="4">
+                    <div>
+                      <table class="table table-bordered table-sm table-striped table-hover table-success spaceTable">
+                        <tr>
+                          <td class="fw-bold" style="color: #535454;">
+                            <button onclick='myFunction("idMunicipal1")'>
+                              <img src="./assets/img/seta.svg" class="seta" alt="seta"/> 
+                            </button>
+                            1ª Regional 
+                          </td>
+                          <td>54</td>
+                          <td>0,12</td>
+                          <td>
+                            <button>
+                              <i class="fas fa-search"></i>            
+                            </button>
+                          </td>  
+                        </tr>
+                        <tr class="idMunicipal1 hide">
+                          <td colspan="4">
+                            <div>
+                              <table class="table table-bordered table-sm table-striped table-hover ">
+                                <tbody>
+                                  <tr>
+                                    <td>
+                                      Belém
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+        
+                                  <tr>
+                                    <td>
+                                      Ananindeua
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+        
+                                  <tr>
+                                    <td>
+                                      Benevides
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+        
+                                  <tr>
+                                    <td>
+                                      Marituba
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+        
+                                  <tr>
+                                    <td>
+                                      Santa Bárbara do Pará
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+                                </tbody>
+                            </table>
+                            </div>
+                          </td>                
+                        </tr>
+                      </table>
+                    </div>
+                  </td>                
+                </tr>
+  
+                <tr class="idEstadual"> <!--Tabela 2ª Regional-->
+                  <td colspan="4">
+                    <div>
+                      <table class="table table-bordered table-sm table-striped table-hover table-success spaceTable">
+                        <tr>
+                          <td class="fw-bold" style="color: #535454;">
+                            <button onclick='myFunction("idMunicipal2")'>
+                              <img src="./assets/img/seta.svg" class="seta" alt="seta"/> 
+                            </button>
+                            2ª Regional
+                          </td>
+                          <td>54</td>
+                          <td>0,12</td>
+                          <td>
+                            <button>
+                              <i class="fas fa-search"></i>            
+                            </button>
+                          </td>  
+                        </tr>
+  
+                        <tr class="idMunicipal2 hide">
+                          <td colspan="4">
+                            <div>
+                              <table class="table table-bordered table-sm table-striped table-hover ">
+                                <tbody>
+                                  <tr>
+                                    <td>
+                                      Santa Izabel do Pará
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Acará
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Bujaru
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Colares
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Concórdia do Pará
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Santo Antônio do Pará
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      São Caetano de Odivelas
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Tomé Açu
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Vigia de Nazaré
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </td>
+                        </tr>
+                      </table>                    
+                    </div>
+                  </td>                
+                </tr>
+  
+                <tr class="idEstadual"> <!--Tabela 3ª Regional-->
+                  <td colspan="4">
+                    <div>
+                      <table class="table table-bordered table-sm table-striped table-hover table-success spaceTable">
+                        <tbody>
+                          <tr>
+                            <td class="fw-bold" style="color: #535454;">
+                              <button onclick='myFunction("idMunicipal3")'>
+                                <img src="./assets/img/seta.svg" class="seta" alt="seta"/> 
+                              </button>
+                              3ª Regional
+                            </td>
+                            <td>54</td>
+                            <td>0,12</td>
+                            <td>
+                              <button>
+                                <i class="fas fa-search"></i>            
+                              </button>
+                            </td>  
+                          </tr>
+                          <tr class="idMunicipal3 hide">
+                            <td colspan="4">
+                              <div>
+                                <table class="table table-bordered table-sm table-striped table-hover ">
+                                  <tbody>
+                                    <tr>
+                                      <td>
+                                        Castanhal
+                                      </td>
+                                      <td>54</td>
+                                      <td>0,12</td>
+                                      <td>
+                                        <button>
+                                          <i class="fas fa-search"></i>            
+                                        </button>
+                                      </td>  
+                                    </tr>
+            
+                                    <tr>
+                                      <td>
+                                        Curuça
+                                      </td>
+                                      <td>54</td>
+                                      <td>0,12</td>
+                                      <td>
+                                        <button>
+                                          <i class="fas fa-search"></i>            
+                                        </button>
+                                      </td>  
+                                    </tr>
+            
+                                    <tr>
+                                      <td>
+                                        Igarapé Açu
+                                      </td>
+                                      <td>54</td>
+                                      <td>0,12</td>
+                                      <td>
+                                        <button>
+                                          <i class="fas fa-search"></i>            
+                                        </button>
+                                      </td>  
+                                    </tr>
+            
+                                    <tr>
+                                      <td>
+                                        Inhangapi
+                                      </td>
+                                      <td>54</td>
+                                      <td>0,12</td>
+                                      <td>
+                                        <button>
+                                          <i class="fas fa-search"></i>            
+                                        </button>
+                                      </td>  
+                                    </tr>
+            
+                                    <tr>
+                                      <td>
+                                        Magalhães Barata
+                                      </td>
+                                      <td>54</td>
+                                      <td>0,12</td>
+                                      <td>
+                                        <button>
+                                          <i class="fas fa-search"></i>            
+                                        </button>
+                                      </td>  
+                                    </tr>
+            
+                                    <tr>
+                                      <td>
+                                        Maracanã
+                                      </td>
+                                      <td>54</td>
+                                      <td>0,12</td>
+                                      <td>
+                                        <button>
+                                          <i class="fas fa-search"></i>            
+                                        </button>
+                                      </td>  
+                                    </tr>
+            
+                                    <tr>
+                                      <td>
+                                        Marapanim
+                                      </td>
+                                      <td>54</td>
+                                      <td>0,12</td>
+                                      <td>
+                                        <button>
+                                          <i class="fas fa-search"></i>            
+                                        </button>
+                                      </td>  
+                                    </tr>
+            
+                                    <tr>
+                                      <td>
+                                        São Francisco do Pará
+                                      </td>
+                                      <td>54</td>
+                                      <td>0,12</td>
+                                      <td>
+                                        <button>
+                                          <i class="fas fa-search"></i>            
+                                        </button>
+                                      </td>  
+                                    </tr>
+            
+                                    <tr>
+                                      <td>
+                                        São Domingos do Capim
+                                      </td>
+                                      <td>54</td>
+                                      <td>0,12</td>
+                                      <td>
+                                        <button>
+                                          <i class="fas fa-search"></i>            
+                                        </button>
+                                      </td>  
+                                    </tr>
+            
+                                    <tr>
+                                      <td>
+                                        São João da Ponta
+                                      </td>
+                                      <td>54</td>
+                                      <td>0,12</td>
+                                      <td>
+                                        <button>
+                                          <i class="fas fa-search"></i>            
+                                        </button>
+                                      </td>  
+                                    </tr>
+            
+                                    <tr>
+                                      <td>
+                                        Terra Alta
+                                      </td>
+                                      <td>54</td>
+                                      <td>0,12</td>
+                                      <td>
+                                        <button>
+                                          <i class="fas fa-search"></i>            
+                                        </button>
+                                      </td>  
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>        
+                            </td>
+                          </tr>                            
+                        </tbody> 
+                      </table>
+                    </div>
+                  </td>                
+                </tr>
+  
+                <tr class="idEstadual"> <!--Tabela 4ª Regional-->
+                  <td colspan="4">
+                    <div>
+                      <table class="table table-bordered table-sm table-striped table-hover table-success spaceTable">
+                        <tr>
+                          <td class="fw-bold" style="color: #535454;">
+                            <button onclick='myFunction("idMunicipal4")'>
+                              <img src="./assets/img/seta.svg" class="seta" alt="seta"/> 
+                            </button>
+                            4ª Regional
+                          </td>
+                          <td>54</td>
+                          <td>0,12</td>
+                          <td>
+                            <button>
+                              <i class="fas fa-search"></i>            
+                            </button>
+                          </td>  
+                        </tr> 
+                  
+                        <tr class="idMunicipal4 hide">
+                          <td colspan="4">
+                            <div>
+                              <table class="table table-bordered table-sm table-striped table-hover ">
+                                <tbody>
+                                  <tr>
+                                    <td>
+                                      Capanema
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Augusto Correa
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Bonito
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Bragança
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Cachoeira do Piriá
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Nova Timboteua
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Ourém
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Peixe-Boi
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Primavera
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Quatipuru
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Salinópolis
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Santa Luzia do Pará
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Santarém Novo
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      São João de Pirabas
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Traquateua
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Viseu
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+                                </tbody>
+                              </table> 
+                            </div>          
+                          </td>
+                        </tr>                        
+                      </table>                   
+                    </div>
+                  </td>                
+                </tr>              
+  
+                <tr class="idEstadual"> <!--Tabela 5ª Regional-->
+                  <td colspan="4">
+                    <div>
+                      <table class="table table-bordered table-sm table-striped table-hover table-success spaceTable">
+                        <tr>
+                          <td class="fw-bold" style="color: #535454;">
+                            <button onclick='myFunction("idMunicipal5")'>
+                              <img src="./assets/img/seta.svg" class="seta" alt="seta"/> 
+                            </button>
+                            5ª Regional
+                          </td>
+                          <td>54</td>
+                          <td>0,12</td>
+                          <td>
+                            <button>
+                              <i class="fas fa-search"></i>            
+                            </button>
+                          </td>  
+                        </tr> 
+                        <tr class="idMunicipal5 hide">
+                          <td colspan="4">
+                            <div>
+                              <table class="table table-bordered table-sm table-striped table-hover ">
+                                <tbody>
+                                  <tr>
+                                    <td>
+                                      São Miguel do Guamá
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Aurora do Pará
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Capitão Poço
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Dom Eliseu
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Garrafão do Norte
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Ipixuna do Pará
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Irituia
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Mãe do Rio
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Nova Esperança do Piriá
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Paragominas
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Santa Maria
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </td>
+                        </tr>                      
+                      </table>
+                    </div>
+                  </td>                
+                </tr>
+  
+                <tr class="idEstadual"> <!--Tabela 6ª Regional-->
+                  <td colspan="4">
+                    <div>
+                      <table class="table table-bordered table-sm table-striped table-hover table-success spaceTable">
+                        <tr>
+                          <td class="fw-bold" style="color: #535454;">
+                            <button onclick='myFunction("idMunicipal6")'>
+                              <img src="./assets/img/seta.svg" class="seta" alt="seta"/> 
+                            </button>
+                            6ª Regional
+                          </td>
+                          <td>54</td>
+                          <td>0,12</td>
+                          <td>
+                            <button>
+                              <i class="fas fa-search"></i>            
+                            </button>
+                          </td>  
+                        </tr> 
+                        <tr class="idMunicipal6 hide">
+                          <td colspan="4">
+                            <div>
+                              <table class="table table-bordered table-sm table-striped table-hover ">
+                                <tbody>
+                                  <tr>
+                                    <td>
+                                      Barcarena
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Abaetetuba
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Igarapé-Miri
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Moju
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Tailândia
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </td>
+                        </tr>                      
+                      </table>
+                    </div>
+                  </td>                
+                </tr>
+  
+                <tr class="idEstadual"> <!--Tabela 7ª Regional-->
+                  <td colspan="4">
+                    <div>
+                      <table class="table table-bordered table-sm table-striped table-hover table-success spaceTable">
+                        <tr>
+                          <td class="fw-bold" style="color: #535454;">
+                            <button onclick='myFunction("idMunicipal7")'>
+                              <img src="./assets/img/seta.svg" class="seta" alt="seta"/> 
+                            </button>
+                            7ª Regional
+                          </td>
+                          <td>54</td>
+                          <td>0,12</td>
+                          <td>
+                            <button>
+                              <i class="fas fa-search"></i>            
+                            </button>
+                          </td>  
+                        </tr> 
+  
+                        <tr class="idMunicipal7 hide">
+                          <td colspan="4">
+                            <div>
+                              <table class="table table-bordered table-sm table-striped table-hover ">
+                                <tbody>
+                                  <tr>
+                                    <td>
+                                      Afuá
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Chaves
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Cachoeira do Arari
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Muaná
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Ponta de Pedras
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Santa Cruz do Arari
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Soure
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Salvaterra
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      São Sebastião da Boa Vista
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </td>
+                        </tr>                      
+                      </table>
+                    </div>
+                  </td>                
+                </tr>
+  
+                <tr class="idEstadual"> <!--Tabela 8ª Regional-->
+                  <td colspan="4">
+                    <div>
+                      <table class="table table-bordered table-sm table-striped table-hover table-success spaceTable">
+                        <tr>
+                          <td class="fw-bold" style="color: #535454;">
+                            <button onclick='myFunction("idMunicipal8")'>
+                              <img src="./assets/img/seta.svg" class="seta" alt="seta"/> 
+                            </button>
+                            8ª Regional
+                          </td>
+                          <td>54</td>
+                          <td>0,12</td>
+                          <td>
+                            <button>
+                              <i class="fas fa-search"></i>            
+                            </button>
+                          </td>  
+                        </tr> 
+                        
+                        <tr class="idMunicipal8 hide">
+                          <td colspan="4">
+                            <div>
+                              <table class="table table-bordered table-sm table-striped table-hover ">
+                                <tbody>
+                                  <tr>
+                                    <td>
+                                      Breves
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Anajás
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Bagre
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Curralinho
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Gurupá
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Melgaço
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Portel
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </td>
+                        </tr>                      
+                      </table>
+                    </div>
+                  </td>                
+                </tr>
+  
+                <tr class="idEstadual"> <!--Tabela 9ª Regional-->
+                  <td colspan="4">
+                    <div>
+                      <table class="table table-bordered table-sm table-striped table-hover table-success spaceTable">
+                        <tr>
+                          <td class="fw-bold" style="color: #535454;">
+                            <button onclick='myFunction("idMunicipal9")'>
+                              <img src="./assets/img/seta.svg" class="seta" alt="seta"/> 
+                            </button>
+                            9ª Regional
+                          </td>
+                          <td>54</td>
+                          <td>0,12</td>
+                          <td>
+                            <button>
+                              <i class="fas fa-search"></i>            
+                            </button>
+                          </td>  
+                        </tr> 
+                        
+                        <tr class="idMunicipal9 hide">
+                          <td colspan="4">
+                            <div>
+                              <table class="table table-bordered table-sm table-striped table-hover ">
+                                <tbody>
+                                  <tr>
+                                    <td>
+                                      Santarém
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Alenquer
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Almeirim
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Aveiro
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Belterra
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Curuá
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Faro
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Itaituba
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Juruti
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Jacareacanga
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Mojuí dos Campos
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Monte Alegre
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Novo Progresso
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Óbidos
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Oriximiná
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Prainha
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Placas
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Rurópolis
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Terra Santa
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Trairão
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </td>
+                        </tr>                      
+                      </table>
+                    </div>
+                  </td>                
+                </tr>
+  
+                <tr class="idEstadual"> <!--Tabela 10ª Regional-->
+                  <td colspan="4">
+                    <div>
+                      <table class="table table-bordered table-sm table-striped table-hover table-success spaceTable">
+                        <tr>
+                          <td class="fw-bold" style="color: #535454;">
+                            <button onclick='myFunction("idMunicipal10")'>
+                              <img src="./assets/img/seta.svg" class="seta" alt="seta"/> 
+                            </button>
+                            10ª Regional
+                          </td>
+                          <td>54</td>
+                          <td>0,12</td>
+                          <td>
+                            <button>
+                              <i class="fas fa-search"></i>            
+                            </button>
+                          </td>  
+                        </tr> 
+                        
+                        <tr class="idMunicipal10 hide">
+                          <td colspan="4">
+                            <div>
+                              <table class="table table-bordered table-sm table-striped table-hover ">
+                                <tbody>
+                                  <tr>
+                                    <td>
+                                      Altamira
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Anapú
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Brasil Novo
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Medicilândia
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Pacajá
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Porto de Moz
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Senador José Porfírio
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Uruará
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Vitória do Xingu
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </td>
+                        </tr>                      
+                      </table>
+                    </div>
+                  </td>                
+                </tr>
+  
+                <tr class="idEstadual"> <!--Tabela 11ª Regional-->
+                  <td colspan="4">
+                    <div>
+                      <table class="table table-bordered table-sm table-striped table-hover table-success spaceTable">
+                        <tr>
+                          <td class="fw-bold" style="color: #535454;">
+                            <button onclick='myFunction("idMunicipal11")'>
+                              <img src="./assets/img/seta.svg" class="seta" alt="seta"/> 
+                            </button>
+                            11ª Regional
+                          </td>
+                          <td>54</td>
+                          <td>0,12</td>
+                          <td>
+                            <button>
+                              <i class="fas fa-search"></i>            
+                            </button>
+                          </td>  
+                        </tr> 
+                        
+                        <tr class="idMunicipal11 hide">
+                          <td colspan="4">
+                            <div>
+                              <table class="table table-bordered table-sm table-striped table-hover ">
+                                <tbody>
+                                  <tr>
+                                    <td>
+                                      Marabá
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Abel Figueiredo
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Bom Jesus do Tocantins
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Brejo Grande do Araguaia
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Breu Branco
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Canaã dos Carajás
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Eldorado dos Carajás
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Goianésia do Pará
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Itupiranga
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Jacundá
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Nova Ipixuna
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Novo Repartimento
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Palestina do Pará
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Parauapebas
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Piçarra
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Rondon do Pará
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      São Domingos do Araguaia
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      São Geraldo do Araguaia
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      São João do Araguaia
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Tucuruí
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </td>
+                        </tr>                      
+                      </table>
+                    </div>
+                  </td>                
+                </tr>
+  
+                <tr class="idEstadual"> <!--Tabela 12ª Regional-->
+                  <td colspan="4">
+                    <div>
+                      <table class="table table-bordered table-sm table-striped table-hover table-success spaceTable">
+                        <tr>
+                          <td class="fw-bold" style="color: #535454;">
+                            <button onclick='myFunction("idMunicipal12")'>
+                              <img src="./assets/img/seta.svg" class="seta" alt="seta"/> 
+                            </button>
+                            12ª Regional
+                          </td>
+                          <td>54</td>
+                          <td>0,12</td>
+                          <td>
+                            <button>
+                              <i class="fas fa-search"></i>            
+                            </button>
+                          </td>  
+                        </tr> 
+                        
+                        <tr class="idMunicipal12 hide">
+                          <td colspan="4">
+                            <div>
+                              <table class="table table-bordered table-sm table-striped table-hover ">
+                                <tbody>
+                                  <tr>
+                                    <td>
+                                      Conceição do Araguaia
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Água Azul do Norte
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Bannach
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Cumarú do Norte 
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Floresta do Araguaia
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Ourilândia do Norte
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Pau D'arco
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Redenção
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Rio Maria
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Santa Maria das Barreiras
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Santana do Araguaia
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      São Féliz do Xingu
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Sapucaia
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Tucumã
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Xinguara
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </td>
+                        </tr>                      
+                      </table>
+                    </div>
+                  </td>                
+                </tr>
+  
+                <tr class="idEstadual"> <!--Tabela 13ª Regional-->
+                  <td colspan="4">
+                    <div>
+                      <table class="table table-bordered table-sm table-striped table-hover table-success spaceTable">
+                        <tr>
+                          <td class="fw-bold" style="color: #535454;">
+                            <button onclick='myFunction("idMunicipal13")'>
+                              <img src="./assets/img/seta.svg" class="seta" alt="seta"/> 
+                            </button>
+                            13ª Regional
+                          </td>
+                          <td>54</td>
+                          <td>0,12</td>
+                          <td>
+                            <button>
+                              <i class="fas fa-search"></i>            
+                            </button>
+                          </td>  
+                        </tr> 
+                        
+                        <tr class="idMunicipal13 hide">
+                          <td colspan="4">
+                            <div>
+                              <table class="table table-bordered table-sm table-striped table-hover ">
+                                <tbody>
+                                  <tr>
+                                    <td>
+                                      Baião
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Cametá
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Limoeiro do Ajuru
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Mocajuba
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+          
+                                  <tr>
+                                    <td>
+                                      Oeiras do Pará
+                                    </td>
+                                    <td>54</td>
+                                    <td>0,12</td>
+                                    <td>
+                                      <button>
+                                        <i class="fas fa-search"></i>            
+                                      </button>
+                                    </td>  
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </td>
+                        </tr>                      
+                      </table>
+                    </div>
+                  </td>                
+                </tr>              
+              </tbody>    
+            </table>
+          </div>
+          
+          <div class="row" style="margin: 200px 10px; text-align: center; text-transform: uppercase;"> <!--Div Gráficos-->
+
+            <h3 style="text-align: center; color: #535454;">NÍVEL</h3> <!--Estadual/Regional/Municipal-->
+
+            <div class="col">
+              
+              <img src="assets/img/grafico.PNG" alt="Grafico" class="imgSize">
+              <h6>Sexo</h6>
+      
+            </div>
+      
+            <div class="col">
+
+              <img src="assets/img/grafico.PNG" alt="Grafico" class="imgSize">
+              <h6>Cor/Raça</h6>  
+      
+            </div>
+
+            <div class="col">
+              
+              <img src="assets/img/grafico.PNG" alt="Grafico" class="imgSize">
+              <h6>Ocorrência</h6>
+      
+            </div>
+            
+          </div>                
+    
+        </div>
+
+      </div>  
+
+    </div>
+
+  </body>
+
+  <footer class="footer"> <!--Footer--> 
+
+    <p class="text-center bolder" style="color: antiquewhite;">sespa.gov.br</p>
+
+  </footer>  
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="assets/js/jquery-3.6.0.min.js"></script>
+  <script>
+    function myFunction(idLinha) {
+      console.log(idLinha);
+      $("." + idLinha).toggleClass("hide");
+    }
+  </script>  
+
+</html>
+
+<!-- INCLUIR FILTRO DE OCORRÊNCIA/RESIDÊNCIA
+
+ORDEM DE SELEÇÃO: LOCAL -> ANO -> RESID/OCORREN 
+
+-> SEXO -> COR/RAÇA -> LOCAL -->
+
